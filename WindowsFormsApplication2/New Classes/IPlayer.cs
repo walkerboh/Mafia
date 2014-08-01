@@ -25,7 +25,6 @@ namespace Mafia
             side = JobToSide(job);
             alive = true;
             gun = armor = 0;
-
         }
 
         private Codes.Side JobToSide(Codes.Job job)
