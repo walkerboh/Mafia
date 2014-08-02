@@ -16,3 +16,12 @@ C:\Users\Evan\Desktop\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debu
 C:\Users\Evan\Desktop\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\Mafia.Form1.resources
 C:\Users\Evan\Desktop\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Properties.Resources.resources
 C:\Users\Evan\Desktop\WindowsFormsApplication2\WindowsFormsApplication2\obj\Debug\Mafia.csproj.GenerateResource.Cache
+D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.csprojResolveAssemblyReference.cache
+D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.Form1.resources
+D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.csproj.GenerateResource.Cache
+D:\Mafia\WindowsFormsApplication2\bin\Debug\Mafia.exe.config
+D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.Properties.Resources.resources
+D:\Mafia\WindowsFormsApplication2\bin\Debug\Mafia.exe
+D:\Mafia\WindowsFormsApplication2\bin\Debug\Mafia.pdb
+D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.exe
+D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.pdb

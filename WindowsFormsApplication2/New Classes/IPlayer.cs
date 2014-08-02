@@ -6,20 +6,33 @@ using System.Threading.Tasks;
 
 namespace Mafia
 {
-    class IPlayer
+    abstract class IPlayer
     {
         private static int IDCounter = 0;
 
-        int ID;
-        string name;
-        bool alive;
-        int gun, armor;
-        Codes.Side side;
-        Codes.Job job;
+        private int id;
+        private string name;
+        private bool alive;
+        private int gun, armor;
+        private Codes.Side side;
+        private Codes.Job job;
+        private IPlayer killed;
+        private bool saved;
+        private bool hooked;
+
+        public bool Alive { get { return alive; } set { alive = value; } }
+        public string Name { get { return name; } }
+        public int ID { get { return id; } }
+        public Codes.Side Side { get { return side; } }
+        public Codes.Job Job { get { return job; } }
+        public int Gun { get { return gun; } }
+        public IPlayer Killed { get { return killed; } set { killed = value; } }
+        public bool Saved { get { return saved; } set { saved = value; } }
+        public bool Hooked { get { return hooked; } set { hooked = value; } }
 
         public IPlayer(string name, Codes.Job job)
         {
-            ID = ++IDCounter;
+            id = ++IDCounter;
             this.name = name;
             this.job = job;
             side = JobToSide(job);
@@ -43,9 +56,25 @@ namespace Mafia
             }
         }
 
-        public virtual void takeAction(ref IPlayer player);
+        public void KillPlayer()
+        {
+            alive = false;
+            DeathAction();
+        }
 
-        public void giveItem(Codes.Item item)
+        public abstract bool? TakeAction(ref IPlayer player);
+
+        public virtual void DeathAction()
+        {
+            return;
+        }
+
+        public virtual bool CopResult()
+        {
+            return side == Codes.Side.MAFIA && job != Codes.Job.GODFATHER;
+        }
+
+        public void GiveItem(Codes.Item item)
         {
             if (item == Codes.Item.ARMOR)
                 armor++;
@@ -53,7 +82,7 @@ namespace Mafia
                 gun++;
         }
 
-        public bool useItem(Codes.Item item)
+        public bool UseItem(Codes.Item item)
         {
             if(item == Codes.Item.ARMOR)
             {

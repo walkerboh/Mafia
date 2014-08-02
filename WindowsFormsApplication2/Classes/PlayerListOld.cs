@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mafia.Classes
 {
-    class PlayerList
+    class PlayerListOld
     {
         private List<Player> players = new List<Player>();
         private List<Player> alive = new List<Player>();

@@ -16,7 +16,7 @@ namespace Mafia
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Mafia.Form1());
+            Application.Run(new Form1());
         }
     }
 }

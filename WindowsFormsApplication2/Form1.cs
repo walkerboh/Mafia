@@ -13,7 +13,7 @@ namespace Mafia
 {
     public partial class Form1 : Form
     {
-        PlayerList players = new PlayerList();
+        PlayerListOld players = new PlayerListOld();
         TurnHandler turn = new TurnHandler();
         int num;
         bool end = false;
@@ -67,7 +67,7 @@ namespace Mafia
             if (players.MafiaAlive >= players.VillageAlive || players.MafiaAlive == 0)
             {
                 MessageBox.Show("Number of mafia equal or greater than number of townies. Invalid setup. Re-enter all players.", "Invalid Setup", MessageBoxButtons.OK);
-                players = new PlayerList();
+                players = new PlayerListOld();
                 players.initialize();
                 Players.Text = "";
             }

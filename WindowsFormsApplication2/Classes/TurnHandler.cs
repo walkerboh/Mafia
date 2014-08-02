@@ -29,7 +29,7 @@ namespace Mafia.Classes
             hookTarget.Clear();
         }
 
-        public TurnReturn handle(Codes.Job job, string target, PlayerList players, string player)
+        public TurnReturn handle(Codes.Job job, string target, PlayerListOld players, string player)
         {
             int targ;
             TurnReturn info = null;
@@ -249,7 +249,7 @@ namespace Mafia.Classes
             return info;
         }
 
-        public TurnReturn handleHunter(string target, PlayerList players)
+        public TurnReturn handleHunter(string target, PlayerListOld players)
         {
             TurnReturn info;
             int targ = players.getPlayer(target);
@@ -263,7 +263,7 @@ namespace Mafia.Classes
             return info = new TurnReturn(false, target + " is already dead.");
         }
 
-        public TurnReturn handleGunFire(string userS, string targetS, PlayerList players)
+        public TurnReturn handleGunFire(string userS, string targetS, PlayerListOld players)
         {
             int user = players.getPlayer(userS);
             int target = players.getPlayer(targetS);
@@ -288,7 +288,7 @@ namespace Mafia.Classes
             return new TurnReturn(false, user + " does not have a gun.");
         }
 
-        public List<string> handleNightActions(PlayerList players)
+        public List<string> handleNightActions(PlayerListOld players)
         {
             List<string> text = new List<string>();
             List<TurnNode> targets = new List<TurnNode>();
