@@ -16,7 +16,7 @@ namespace Mafia
         private int gun, armor;
         private Codes.Side side;
         private Codes.Job job;
-        private IPlayer killed;
+        private List<IPlayer> killed;
         private bool saved;
         private bool hooked;
 
@@ -26,7 +26,7 @@ namespace Mafia
         public Codes.Side Side { get { return side; } }
         public Codes.Job Job { get { return job; } }
         public int Gun { get { return gun; } }
-        public IPlayer Killed { get { return killed; } set { killed = value; } }
+        public List<IPlayer> Killed { get { return killed; } set { killed = value; } }
         public bool Saved { get { return saved; } set { saved = value; } }
         public bool Hooked { get { return hooked; } set { hooked = value; } }
 
@@ -54,6 +54,11 @@ namespace Mafia
                 default:
                     return Codes.Side.VILLAGE;
             }
+        }
+
+        public void ResolveKillsSaves()
+        {
+
         }
 
         public void KillPlayer()

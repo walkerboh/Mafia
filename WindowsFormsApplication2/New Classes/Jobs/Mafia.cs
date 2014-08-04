@@ -13,7 +13,7 @@ namespace Mafia
         public override bool? TakeAction(ref IPlayer player)
         {
             //TODO ensure that a random Mafia is called every turn
-            player.Killed = this;
+            player.Killed.Add(this);
             return null;
         }
     }
