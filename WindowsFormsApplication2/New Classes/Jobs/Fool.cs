@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace Mafia
 {
-    class Doctor : IPlayer
+    class Fool : IPlayer
     {
-        public Doctor(String name) : base(name, Codes.Job.DOCTOR) { }
+        public Fool(String name) : base(name, Codes.Job.FOOL) { }
 
         public override bool? TakeAction(ref IPlayer player)
         {
-            if(!this.Hooked)
-                player.Saved = true;
             return null;
+        }
+
+        public override void DeathAction(bool lynched)
+        {
+            this.Lynched = lynched;
         }
     }
 }

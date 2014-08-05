@@ -15,11 +15,14 @@ namespace Mafia
             return null;
         }
 
-        public override void DeathAction()
+        public override void DeathAction(bool lynched)
         {
-            //TODO UI element to get target
-            IPlayer player = null;
-            player.KillPlayer();
+            if (lynched)
+            {
+                //TODO UI element to get target
+                IPlayer player = null;
+                player.KillPlayer();
+            }
         }
     }
 }

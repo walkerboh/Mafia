@@ -12,7 +12,8 @@ namespace Mafia
 
         public override bool? TakeAction(ref IPlayer player)
         {
-            player.GiveItem(Codes.Item.GUN);
+            if(!this.Hooked)
+                player.GiveItem(Codes.Item.GUN);
             return null;
         }
     }

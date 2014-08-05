@@ -38,6 +38,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.GamePanel = new System.Windows.Forms.Panel();
+            this.GunPanel = new System.Windows.Forms.Panel();
+            this.GunSubmit = new System.Windows.Forms.Button();
+            this.GunTarget = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.GunUser = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.HunterPanel = new System.Windows.Forms.Panel();
             this.HunterSubmit = new System.Windows.Forms.Button();
             this.HunterTarget = new System.Windows.Forms.ComboBox();
@@ -53,16 +59,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.Players = new System.Windows.Forms.RichTextBox();
             this.Statistcs = new System.Windows.Forms.RichTextBox();
-            this.GunPanel = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.GunUser = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.GunTarget = new System.Windows.Forms.ComboBox();
-            this.GunSubmit = new System.Windows.Forms.Button();
             this.PlayerEntryPanel.SuspendLayout();
             this.GamePanel.SuspendLayout();
-            this.HunterPanel.SuspendLayout();
             this.GunPanel.SuspendLayout();
+            this.HunterPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -169,6 +169,65 @@
             this.GamePanel.Size = new System.Drawing.Size(463, 361);
             this.GamePanel.TabIndex = 2;
             // 
+            // GunPanel
+            // 
+            this.GunPanel.Controls.Add(this.GunSubmit);
+            this.GunPanel.Controls.Add(this.GunTarget);
+            this.GunPanel.Controls.Add(this.label12);
+            this.GunPanel.Controls.Add(this.GunUser);
+            this.GunPanel.Controls.Add(this.label11);
+            this.GunPanel.Location = new System.Drawing.Point(321, 183);
+            this.GunPanel.Name = "GunPanel";
+            this.GunPanel.Size = new System.Drawing.Size(141, 177);
+            this.GunPanel.TabIndex = 8;
+            this.GunPanel.Visible = false;
+            // 
+            // GunSubmit
+            // 
+            this.GunSubmit.Location = new System.Drawing.Point(10, 134);
+            this.GunSubmit.Name = "GunSubmit";
+            this.GunSubmit.Size = new System.Drawing.Size(75, 23);
+            this.GunSubmit.TabIndex = 4;
+            this.GunSubmit.Text = "FIRE!";
+            this.GunSubmit.UseVisualStyleBackColor = true;
+            this.GunSubmit.Click += new System.EventHandler(this.GunSubmit_Click);
+            // 
+            // GunTarget
+            // 
+            this.GunTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GunTarget.FormattingEnabled = true;
+            this.GunTarget.Location = new System.Drawing.Point(10, 91);
+            this.GunTarget.Name = "GunTarget";
+            this.GunTarget.Size = new System.Drawing.Size(121, 21);
+            this.GunTarget.TabIndex = 3;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(7, 71);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(91, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Select gun target:";
+            // 
+            // GunUser
+            // 
+            this.GunUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GunUser.FormattingEnabled = true;
+            this.GunUser.Location = new System.Drawing.Point(7, 33);
+            this.GunUser.Name = "GunUser";
+            this.GunUser.Size = new System.Drawing.Size(121, 21);
+            this.GunUser.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(4, 4);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(84, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Select gun user:";
+            // 
             // HunterPanel
             // 
             this.HunterPanel.Controls.Add(this.HunterSubmit);
@@ -257,7 +316,7 @@
             // PlayText
             // 
             this.PlayText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PlayText.Location = new System.Drawing.Point(3, 21);
+            this.PlayText.Location = new System.Drawing.Point(5, 28);
             this.PlayText.Name = "PlayText";
             this.PlayText.ReadOnly = true;
             this.PlayText.Size = new System.Drawing.Size(457, 149);
@@ -309,65 +368,6 @@
             this.Statistcs.TabIndex = 6;
             this.Statistcs.Text = "";
             // 
-            // GunPanel
-            // 
-            this.GunPanel.Controls.Add(this.GunSubmit);
-            this.GunPanel.Controls.Add(this.GunTarget);
-            this.GunPanel.Controls.Add(this.label12);
-            this.GunPanel.Controls.Add(this.GunUser);
-            this.GunPanel.Controls.Add(this.label11);
-            this.GunPanel.Location = new System.Drawing.Point(321, 183);
-            this.GunPanel.Name = "GunPanel";
-            this.GunPanel.Size = new System.Drawing.Size(141, 177);
-            this.GunPanel.TabIndex = 8;
-            this.GunPanel.Visible = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 4);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(84, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Select gun user:";
-            // 
-            // GunUser
-            // 
-            this.GunUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.GunUser.FormattingEnabled = true;
-            this.GunUser.Location = new System.Drawing.Point(7, 33);
-            this.GunUser.Name = "GunUser";
-            this.GunUser.Size = new System.Drawing.Size(121, 21);
-            this.GunUser.TabIndex = 1;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 71);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(91, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Select gun target:";
-            // 
-            // GunTarget
-            // 
-            this.GunTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.GunTarget.FormattingEnabled = true;
-            this.GunTarget.Location = new System.Drawing.Point(10, 91);
-            this.GunTarget.Name = "GunTarget";
-            this.GunTarget.Size = new System.Drawing.Size(121, 21);
-            this.GunTarget.TabIndex = 3;
-            // 
-            // GunSubmit
-            // 
-            this.GunSubmit.Location = new System.Drawing.Point(10, 134);
-            this.GunSubmit.Name = "GunSubmit";
-            this.GunSubmit.Size = new System.Drawing.Size(75, 23);
-            this.GunSubmit.TabIndex = 4;
-            this.GunSubmit.Text = "FIRE!";
-            this.GunSubmit.UseVisualStyleBackColor = true;
-            this.GunSubmit.Click += new System.EventHandler(this.GunSubmit_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,10 +387,10 @@
             this.PlayerEntryPanel.PerformLayout();
             this.GamePanel.ResumeLayout(false);
             this.GamePanel.PerformLayout();
-            this.HunterPanel.ResumeLayout(false);
-            this.HunterPanel.PerformLayout();
             this.GunPanel.ResumeLayout(false);
             this.GunPanel.PerformLayout();
+            this.HunterPanel.ResumeLayout(false);
+            this.HunterPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

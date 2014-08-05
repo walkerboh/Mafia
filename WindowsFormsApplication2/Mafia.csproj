@@ -56,18 +56,28 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="New Classes\IPlayer.cs" />
     <Compile Include="New Classes\Jobs\Armorsmith.cs" />
     <Compile Include="New Classes\Jobs\Bodyguard.cs" />
     <Compile Include="New Classes\Jobs\Cop.cs" />
     <Compile Include="New Classes\Jobs\Doctor.cs" />
+    <Compile Include="New Classes\Jobs\Fool.cs" />
     <Compile Include="New Classes\Jobs\Godfather.cs" />
     <Compile Include="New Classes\Jobs\Gunsmith.cs" />
     <Compile Include="New Classes\Jobs\Hooker.cs" />
     <Compile Include="New Classes\Jobs\Hunter.cs" />
     <Compile Include="New Classes\Jobs\InsaneCop.cs" />
+    <Compile Include="New Classes\Jobs\Killer.cs" />
     <Compile Include="New Classes\Jobs\Mafia.cs" />
+    <Compile Include="New Classes\MafiaGame.cs" />
     <Compile Include="New Classes\Jobs\Silencer.cs" />
+    <Compile Include="New Classes\Jobs\Vigilante.cs" />
     <Compile Include="New Classes\Jobs\Villager.cs" />
     <Compile Include="New Classes\PlayerFactory.cs" />
     <Compile Include="New Classes\PlayerList.cs" />
@@ -75,6 +85,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

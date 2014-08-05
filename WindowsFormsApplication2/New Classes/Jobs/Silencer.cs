@@ -12,7 +12,10 @@ namespace Mafia
 
         public override bool? TakeAction(ref IPlayer player)
         {
-            //print out that player is silenced
+            if (!this.Hooked)
+            {
+                //print out that player is silenced
+            }
             return null;
         }
     }

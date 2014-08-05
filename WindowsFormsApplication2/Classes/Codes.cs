@@ -8,7 +8,7 @@ namespace Mafia
 {
     class Codes
     {
-        public enum Side { MAFIA, VILLAGE, OTHER, INVALID }
+        public enum Side { MAFIA, VILLAGE, FOOL, KILLER, INVALID }
         public enum Job { MAFIA, HOOKER, SILENCER, DOCTOR, COP, INSANECOP, BODYGUARD, ARMORSMITH, GUNSMITH, VIGILANTE, KILLER, FOOL, GODFATHER, HUNTER, VILLAGER }
         public enum Item { GUN, ARMOR }
     }

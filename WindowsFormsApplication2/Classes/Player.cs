@@ -41,7 +41,7 @@ namespace Mafia.Classes
                 case Codes.Job.GODFATHER:
                     return Codes.Side.MAFIA;
                 case Codes.Job.FOOL:
-                    return Codes.Side.OTHER;
+                    return Codes.Side.FOOL;
                 default:
                     return Codes.Side.VILLAGE;
             }
