@@ -12,13 +12,11 @@ namespace Mafia
         Codes.Job[] turnOrder = {Codes.Job.MAFIA, Codes.Job.HOOKER, Codes.Job.SILENCER, Codes.Job.DOCTOR, Codes.Job.COP, Codes.Job.INSANECOP, 
                                     Codes.Job.BODYGUARD, Codes.Job.ARMORSMITH, Codes.Job.GUNSMITH, Codes.Job.VIGILANTE, Codes.Job.KILLER};
         bool end, gunActive;
-        MainForm game;
 
-        public MafiaGame(MainForm game)
+        public MafiaGame()
         {
             players = new PlayerList();
             end = gunActive = false;
-            this.game = game;
         }
     }
 }

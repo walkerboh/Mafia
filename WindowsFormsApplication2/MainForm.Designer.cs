@@ -78,6 +78,7 @@
             this.newGameMenuItem.Name = "newGameMenuItem";
             this.newGameMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newGameMenuItem.Text = "New Game";
+            this.newGameMenuItem.Click += new System.EventHandler(this.newGameMenuItem_Click);
             // 
             // exitMenuItem
             // 
@@ -85,6 +86,7 @@
             this.exitMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.exitMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitMenuItem.Text = "Exit";
+            this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
             // 
             // configurationMenuItem
             // 
@@ -97,7 +99,7 @@
             // settingsMenuItem
             // 
             this.settingsMenuItem.Name = "settingsMenuItem";
-            this.settingsMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settingsMenuItem.Text = "Settings";
             // 
             // txtGameOutput

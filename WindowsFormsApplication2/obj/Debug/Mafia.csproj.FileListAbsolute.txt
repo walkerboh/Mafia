@@ -25,3 +25,5 @@ D:\Mafia\WindowsFormsApplication2\bin\Debug\Mafia.exe
 D:\Mafia\WindowsFormsApplication2\bin\Debug\Mafia.pdb
 D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.exe
 D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.pdb
+D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.MainForm.resources
+D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.NewGamePopup.resources
