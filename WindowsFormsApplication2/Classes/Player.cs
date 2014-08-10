@@ -9,21 +9,21 @@ namespace Mafia.Classes
     class Player
     {
         string name;
-        Codes.Side side;
-        Codes.Job job;
+        Helper.Enums.Side side;
+        Helper.Enums.Job job;
         char letter;
         bool alive = true;
         int gun = 0;
         int armor = 0;
 
         public string Name { get { return name; } }
-        public Codes.Side Side { get { return side; } }
-        public Codes.Job Job { get { return job; } }
+        public Helper.Enums.Side Side { get { return side; } }
+        public Helper.Enums.Job Job { get { return job; } }
         public bool Alive { get { return alive; } set { alive = value; } }
         public char Letter { get { return letter; } }
         public bool Gun { get { return (gun > 0 ? true : false); } }
 
-        public Player(string name, Codes.Job job, char letter)
+        public Player(string name, Helper.Enums.Job job, char letter)
         {
             this.name = name;
             this.job = job;
@@ -31,38 +31,38 @@ namespace Mafia.Classes
             this.letter = letter;
         }
 
-        private Codes.Side jobToSide(Codes.Job job)
+        private Helper.Enums.Side jobToSide(Helper.Enums.Job job)
         {
             switch (job)
             {
-                case Codes.Job.MAFIA:
-                case Codes.Job.HOOKER:
-                case Codes.Job.SILENCER:
-                case Codes.Job.GODFATHER:
-                    return Codes.Side.MAFIA;
-                case Codes.Job.FOOL:
-                    return Codes.Side.FOOL;
+                case Helper.Enums.Job.MAFIA:
+                case Helper.Enums.Job.HOOKER:
+                case Helper.Enums.Job.SILENCER:
+                case Helper.Enums.Job.GODFATHER:
+                    return Helper.Enums.Side.MAFIA;
+                case Helper.Enums.Job.FOOL:
+                    return Helper.Enums.Side.FOOL;
                 default:
-                    return Codes.Side.VILLAGE;
+                    return Helper.Enums.Side.VILLAGE;
             }
         }
 
-        public void giveItem(Codes.Item item)
+        public void giveItem(Helper.Enums.Item item)
         {
             switch (item)
             {
-                case Codes.Item.GUN:
+                case Helper.Enums.Item.GUN:
                     gun++; break;
-                case Codes.Item.ARMOR:
+                case Helper.Enums.Item.ARMOR:
                     armor++; break;
             }
         }
 
-        public bool useItem(Codes.Item item)
+        public bool useItem(Helper.Enums.Item item)
         {
             switch(item)
             {
-                case Codes.Item.GUN:
+                case Helper.Enums.Item.GUN:
                     if(gun > 0)
                     {
                         gun--;
@@ -70,7 +70,7 @@ namespace Mafia.Classes
                     }
                     else
                         return false;
-                case Codes.Item.ARMOR:
+                case Helper.Enums.Item.ARMOR:
                     if (armor > 0)
                     {
                         armor--;

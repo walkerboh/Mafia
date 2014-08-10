@@ -8,7 +8,7 @@ namespace Mafia
 {
     class Killer : IPlayer
     {
-        public Killer(String name) : base(name, Codes.Job.KILLER) { }
+        public Killer(String name) : base(name, Helper.Enums.Job.KILLER) { }
 
         public override bool? TakeAction(ref IPlayer player)
         {

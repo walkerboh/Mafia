@@ -8,7 +8,7 @@ namespace Mafia
 {
     class Silencer : IPlayer
     {
-        public Silencer(string name) : base(name, Codes.Job.SILENCER) { }
+        public Silencer(string name) : base(name, Helper.Enums.Job.SILENCER) { }
 
         public override bool? TakeAction(ref IPlayer player)
         {

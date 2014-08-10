@@ -21,7 +21,6 @@ namespace Mafia
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            mafiaGame = new MafiaGame();
         }
 
         public void InitializeNewGame()
@@ -36,8 +35,26 @@ namespace Mafia
 
         private void newGameMenuItem_Click(object sender, EventArgs e)
         {
+            InitializeNewGame();
             NewGamePopup popup = new NewGamePopup();
             DialogResult extended = popup.ShowDialog();
+            PlayerCreationPopup playerCreation = new PlayerCreationPopup(this, extended == System.Windows.Forms.DialogResult.Yes);
+            playerCreation.ShowDialog();
+            mafiaGame = new MafiaGame(playerCreation.players);
+            SetupGame();
+        }
+
+        private void SetupGame()
+        {
+            RefreshPlayerStatus();
+        }
+
+        private void RefreshPlayerStatus()
+        {
+            gridPlayers.Rows.Clear();
+            List<object[]> playerInfo = mafiaGame.GetPlayerInfo();
+            foreach (object[] info in playerInfo)
+                gridPlayers.Rows.Add(info);
         }
 
         private void exitMenuItem_Click(object sender, EventArgs e)

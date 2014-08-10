@@ -8,39 +8,39 @@ namespace Mafia
 {
     static class PlayerFactory
     {
-        public static IPlayer CreatePlayer(String name, Codes.Job job)
+        public static IPlayer CreatePlayer(String name, string job)
         {
             switch (job)
             {
-                case Codes.Job.ARMORSMITH:
+                case Helper.Job.ARMORSMITH:
                     return new Armorsmith(name);
-                case Codes.Job.BODYGUARD:
+                case Helper.Job.BODYGUARD:
                     return new Bodyguard(name);
-                case Codes.Job.COP:
+                case Helper.Job.COP:
                     return new Cop(name);
-                case Codes.Job.DOCTOR:
+                case Helper.Job.DOCTOR:
                     return new Doctor(name);
-                case Codes.Job.FOOL:
+                case Helper.Job.FOOL:
                     return new Fool(name);
-                case Codes.Job.GODFATHER:
+                case Helper.Job.GODFATHER:
                     return new Godfather(name);
-                case Codes.Job.GUNSMITH:
+                case Helper.Job.GUNSMITH:
                     return new Gunsmith(name);
-                case Codes.Job.HOOKER:
+                case Helper.Job.HOOKER:
                     return new Hooker(name);
-                case Codes.Job.HUNTER:
+                case Helper.Job.HUNTER:
                     return new Hunter(name);
-                case Codes.Job.INSANECOP:
+                case Helper.Job.INSANE_COP:
                     return new InsaneCop(name);
-                case Codes.Job.KILLER:
+                case Helper.Job.KILLER:
                     return new Killer(name);
-                case Codes.Job.MAFIA:
+                case Helper.Job.MAFIA:
                     return new Mafia(name);
-                case Codes.Job.SILENCER:
+                case Helper.Job.SILENCER:
                     return new Silencer(name);
-                case Codes.Job.VIGILANTE:
+                case Helper.Job.VIGILANTE:
                     return new Vigilante(name);
-                case Codes.Job.VILLAGER:
+                case Helper.Job.VILLAGER:
                     return new Villager(name);
                 default:
                     return null;

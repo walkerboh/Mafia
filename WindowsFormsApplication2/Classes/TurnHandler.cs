@@ -29,13 +29,13 @@ namespace Mafia.Classes
             hookTarget.Clear();
         }
 
-        public TurnReturn handle(Codes.Job job, string target, PlayerListOld players, string player)
+        public TurnReturn handle(Helper.Enums.Job job, string target, PlayerListOld players, string player)
         {
             int targ;
             TurnReturn info = null;
             switch (job)
             {
-                case Codes.Job.MAFIA:
+                case Helper.Enums.Job.MAFIA:
                     targ = players.getPlayer(target);
                     if (targ == -1)
                         info = new TurnReturn(false, INVALID);
@@ -47,7 +47,7 @@ namespace Mafia.Classes
                     else
                         info = new TurnReturn(false, target + " is already dead.");
                     break;
-                case Codes.Job.DOCTOR:
+                case Helper.Enums.Job.DOCTOR:
                     if (hookTarget.Any<string>(name => name == player))
                         info = new TurnReturn(true, HOOKED);
                     else
@@ -64,7 +64,7 @@ namespace Mafia.Classes
                             info = new TurnReturn(false, target + " is already dead.");
                     }
                     break;
-                case Codes.Job.COP:
+                case Helper.Enums.Job.COP:
                     if (hookTarget.Any<string>(name => name == player))
                         info = new TurnReturn(true, HOOKED);
                     else
@@ -74,9 +74,9 @@ namespace Mafia.Classes
                             info = new TurnReturn(false, INVALID);
                         else if (players[targ].Alive)
                         {
-                            if (players[targ].Job == Codes.Job.GODFATHER)
+                            if (players[targ].Job == Helper.Enums.Job.GODFATHER)
                                 info = new TurnReturn(true, target + " is innocent.");
-                            else if (players[targ].Side == Codes.Side.MAFIA)
+                            else if (players[targ].Side == Helper.Enums.Side.MAFIA)
                                 info = new TurnReturn(true, target + " is Mafia.");
                             else
                                 info = new TurnReturn(true, target + " is innocent.");
@@ -86,7 +86,7 @@ namespace Mafia.Classes
                             info = new TurnReturn(false, target + " is already dead.");
                     }
                     break;
-                case Codes.Job.INSANECOP:
+                case Helper.Enums.Job.INSANECOP:
                     if (hookTarget.Any<string>(name => name == player))
                         info = new TurnReturn(true, HOOKED);
                     else
@@ -96,9 +96,9 @@ namespace Mafia.Classes
                             info = new TurnReturn(false, INVALID);
                         else if (players[targ].Alive)
                         {
-                            if (players[targ].Job == Codes.Job.GODFATHER)
+                            if (players[targ].Job == Helper.Enums.Job.GODFATHER)
                                 info = new TurnReturn(true, target + " is Mafia");
-                            else if (players[targ].Side == Codes.Side.MAFIA)
+                            else if (players[targ].Side == Helper.Enums.Side.MAFIA)
                                 info = new TurnReturn(true, target + " is innocent.");
                             else
                                 info = new TurnReturn(true, target + " is Mafia.");
@@ -108,7 +108,7 @@ namespace Mafia.Classes
                             info = new TurnReturn(false, target + " is already dead.");
                     }
                     break;
-                case Codes.Job.BODYGUARD:
+                case Helper.Enums.Job.BODYGUARD:
                     if (hookTarget.Any<string>(name => name == player))
                         info = new TurnReturn(true, HOOKED);
                     else
@@ -125,7 +125,7 @@ namespace Mafia.Classes
                             info = new TurnReturn(false, target + " is already dead.");
                     }
                     break;
-                case Codes.Job.GUNSMITH:
+                case Helper.Enums.Job.GUNSMITH:
                     if (hookTarget.Any<string>(name => name == player))
                         info = new TurnReturn(true, HOOKED);
                     else
@@ -137,14 +137,14 @@ namespace Mafia.Classes
                         }
                         else if (players[targ].Alive)
                         {
-                            players[targ].giveItem(Codes.Item.GUN);
+                            players[targ].giveItem(Helper.Enums.Item.GUN);
                             info = new TurnReturn(true, target + "was given a gun.");
                         }
                         else
                             info = new TurnReturn(false, target + " is dead and thus cannot receive a gun.");
                     }
                     break;
-                case Codes.Job.ARMORSMITH:
+                case Helper.Enums.Job.ARMORSMITH:
                     if (hookTarget.Any<string>(name => name == player))
                         info = new TurnReturn(true, HOOKED);
                     else
@@ -156,14 +156,14 @@ namespace Mafia.Classes
                         }
                         else if (players[targ].Alive)
                         {
-                            players[targ].giveItem(Codes.Item.ARMOR);
+                            players[targ].giveItem(Helper.Enums.Item.ARMOR);
                             info = new TurnReturn(true, target + "was given armor.");
                         }
                         else
                             info = new TurnReturn(false, target + " is dead and thus cannot receive armor.");
                     }
                     break;
-                case Codes.Job.SILENCER:
+                case Helper.Enums.Job.SILENCER:
                     targ = players.getPlayer(target);
                     if (targ == -1)
                     {
@@ -177,7 +177,7 @@ namespace Mafia.Classes
                     else
                         info = new TurnReturn(false, target + " is already dead.");
                     break;
-                case Codes.Job.HOOKER:
+                case Helper.Enums.Job.HOOKER:
                     targ = players.getPlayer(target);
                     if (targ == -1)
                     {
@@ -191,7 +191,7 @@ namespace Mafia.Classes
                     else
                         info = new TurnReturn(false, target + " is already dead.");
                     break;
-                case Codes.Job.VIGILANTE:
+                case Helper.Enums.Job.VIGILANTE:
                     if (hookTarget.Any<string>(name => name == player))
                         info = new TurnReturn(true, HOOKED);
                     else
@@ -210,7 +210,7 @@ namespace Mafia.Classes
                             info = new TurnReturn(false, target + " is already dead.");
                     }
                     break;
-                case Codes.Job.KILLER:
+                case Helper.Enums.Job.KILLER:
                     if (hookTarget.Any<string>(name => name == player))
                         info = new TurnReturn(true, HOOKED);
                     else
@@ -229,7 +229,7 @@ namespace Mafia.Classes
                             info = new TurnReturn(false, target + " is already dead.");
                     }
                     break;
-                case Codes.Job.VILLAGER:
+                case Helper.Enums.Job.VILLAGER:
                     targ = players.getPlayer(target);
                     if (targ == -1)
                     {
@@ -239,9 +239,9 @@ namespace Mafia.Classes
                     bool success = players.killPlayer(targ);
                     bool hunter = false;
                     bool fool = false;
-                    if (players[targ].Job == Codes.Job.HUNTER)
+                    if (players[targ].Job == Helper.Enums.Job.HUNTER)
                         hunter = true;
-                    else if (players[targ].Job == Codes.Job.FOOL)
+                    else if (players[targ].Job == Helper.Enums.Job.FOOL)
                         fool = true;
                     info = new TurnReturn(success, (success ?  target + " has been lynched." : target + " is already dead."), success, hunter, fool);
                     break;
@@ -276,9 +276,9 @@ namespace Mafia.Classes
             }
             else
                 return new TurnReturn(false, "Target is invalid.");
-            if (players[user].Alive && players[user].useItem(Codes.Item.GUN))
+            if (players[user].Alive && players[user].useItem(Helper.Enums.Item.GUN))
             {
-                if (!players[target].useItem(Codes.Item.ARMOR))
+                if (!players[target].useItem(Helper.Enums.Item.ARMOR))
                 {
                     players.killPlayer(target);
                     return new TurnReturn(true, user + " shot and killed " + target);
@@ -303,7 +303,7 @@ namespace Mafia.Classes
             {
                 targetKilled = true;
                 num = players.getPlayer(targets[0].Target);
-                if (players[num].useItem(Codes.Item.ARMOR))
+                if (players[num].useItem(Helper.Enums.Item.ARMOR))
                     targetKilled = false;
                 foreach (string s in docTarget)
                     if (s == targets[0].Target)

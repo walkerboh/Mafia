@@ -41,13 +41,14 @@
             this.ddlTarget = new System.Windows.Forms.ComboBox();
             this.btnSubmitAction = new System.Windows.Forms.Button();
             this.gridPlayers = new System.Windows.Forms.DataGridView();
+            this.btnGun = new System.Windows.Forms.Button();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJob = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAlive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGun = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArmor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnGun = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPlayers)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +77,7 @@
             // newGameMenuItem
             // 
             this.newGameMenuItem.Name = "newGameMenuItem";
-            this.newGameMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newGameMenuItem.Size = new System.Drawing.Size(134, 22);
             this.newGameMenuItem.Text = "New Game";
             this.newGameMenuItem.Click += new System.EventHandler(this.newGameMenuItem_Click);
             // 
@@ -84,7 +85,7 @@
             // 
             this.exitMenuItem.Name = "exitMenuItem";
             this.exitMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitMenuItem.Size = new System.Drawing.Size(134, 22);
             this.exitMenuItem.Text = "Exit";
             this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
             // 
@@ -163,6 +164,7 @@
             this.gridPlayers.AllowUserToOrderColumns = true;
             this.gridPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colID,
             this.colName,
             this.colSide,
             this.colJob,
@@ -174,6 +176,22 @@
             this.gridPlayers.ReadOnly = true;
             this.gridPlayers.Size = new System.Drawing.Size(644, 213);
             this.gridPlayers.TabIndex = 7;
+            // 
+            // btnGun
+            // 
+            this.btnGun.Location = new System.Drawing.Point(582, 238);
+            this.btnGun.Name = "btnGun";
+            this.btnGun.Size = new System.Drawing.Size(75, 23);
+            this.btnGun.TabIndex = 8;
+            this.btnGun.Text = "Fire Gun";
+            this.btnGun.UseVisualStyleBackColor = true;
+            // 
+            // colID
+            // 
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            this.colID.Visible = false;
             // 
             // colName
             // 
@@ -210,15 +228,6 @@
             this.colArmor.HeaderText = "Armor";
             this.colArmor.Name = "colArmor";
             this.colArmor.ReadOnly = true;
-            // 
-            // btnGun
-            // 
-            this.btnGun.Location = new System.Drawing.Point(582, 238);
-            this.btnGun.Name = "btnGun";
-            this.btnGun.Size = new System.Drawing.Size(75, 23);
-            this.btnGun.TabIndex = 8;
-            this.btnGun.Text = "Fire Gun";
-            this.btnGun.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -261,12 +270,13 @@
         private System.Windows.Forms.ComboBox ddlTarget;
         private System.Windows.Forms.Button btnSubmitAction;
         private System.Windows.Forms.DataGridView gridPlayers;
+        private System.Windows.Forms.Button btnGun;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSide;
         private System.Windows.Forms.DataGridViewTextBoxColumn colJob;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAlive;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGun;
         private System.Windows.Forms.DataGridViewTextBoxColumn colArmor;
-        private System.Windows.Forms.Button btnGun;
     }
 }

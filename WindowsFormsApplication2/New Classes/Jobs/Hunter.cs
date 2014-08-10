@@ -8,7 +8,7 @@ namespace Mafia
 {
     class Hunter : IPlayer
     {
-        public Hunter(String name) : base(name, Codes.Job.HUNTER) { }
+        public Hunter(String name) : base(name, Helper.Enums.Job.HUNTER) { }
 
         public override bool? TakeAction(ref IPlayer player)
         {

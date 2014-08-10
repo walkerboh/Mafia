@@ -59,7 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Codes.cs" />
+    <Compile Include="Classes\Helper.cs" />
     <Compile Include="Classes\PlayerListOld.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\TurnHandler.cs" />
@@ -102,6 +102,12 @@
     <Compile Include="NewGamePopup.Designer.cs">
       <DependentUpon>NewGamePopup.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlayerCreationPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayerCreationPopup.Designer.cs">
+      <DependentUpon>PlayerCreationPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewGamePopup.resx">
       <DependentUpon>NewGamePopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayerCreationPopup.resx">
+      <DependentUpon>PlayerCreationPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -8,7 +8,7 @@ namespace Mafia
 {
     class InsaneCop : IPlayer
     {
-        public InsaneCop(string name) : base(name, Codes.Job.INSANECOP) { }
+        public InsaneCop(string name) : base(name, Helper.Enums.Job.INSANECOP) { }
 
         public override bool? TakeAction(ref IPlayer player)
         {

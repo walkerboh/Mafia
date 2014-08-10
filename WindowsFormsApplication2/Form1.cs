@@ -26,9 +26,9 @@ namespace Mafia
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Codes.Job[] jobs = { Codes.Job.MAFIA, Codes.Job.VILLAGER, Codes.Job.COP, Codes.Job.DOCTOR, Codes.Job.INSANECOP, Codes.Job.BODYGUARD, Codes.Job.GODFATHER, 
-                                   Codes.Job.FOOL, Codes.Job.HUNTER, Codes.Job.SILENCER, Codes.Job.HOOKER, Codes.Job.VIGILANTE, Codes.Job.KILLER, Codes.Job.ARMORSMITH, Codes.Job.GUNSMITH};
-            foreach (Codes.Job j in jobs)
+            Helper.Enums.Job[] jobs = { Helper.Enums.Job.MAFIA, Helper.Enums.Job.VILLAGER, Helper.Enums.Job.COP, Helper.Enums.Job.DOCTOR, Helper.Enums.Job.INSANECOP, Helper.Enums.Job.BODYGUARD, Helper.Enums.Job.GODFATHER, 
+                                   Helper.Enums.Job.FOOL, Helper.Enums.Job.HUNTER, Helper.Enums.Job.SILENCER, Helper.Enums.Job.HOOKER, Helper.Enums.Job.VIGILANTE, Helper.Enums.Job.KILLER, Helper.Enums.Job.ARMORSMITH, Helper.Enums.Job.GUNSMITH};
+            foreach (Helper.Enums.Job j in jobs)
                 PlayerJob.Items.Add(j);
             GameState.Text = "Setup";
             GamePanel.Enabled = false;
@@ -44,7 +44,7 @@ namespace Mafia
             else
             {
                 string name = PlayerName.Text;
-                Codes.Job job = (Codes.Job)PlayerJob.SelectedItem;
+                Helper.Enums.Job job = (Helper.Enums.Job)PlayerJob.SelectedItem;
                 players.addPlayer(name, job);
                 PlayerName.Text = string.Empty;
                 PlayerName.Focus();
@@ -80,7 +80,7 @@ namespace Mafia
                 updateStatistics();
                 num = -1;
                 players.sort();
-                if (players.countJobPresent(Codes.Job.GUNSMITH) >= 1)
+                if (players.countJobPresent(Helper.Enums.Job.GUNSMITH) >= 1)
                     gunPresent = true;
                 addTextPlayText("\nInitialization Complete...\n------Game Starting------");
                 nextGameState();
@@ -102,13 +102,13 @@ namespace Mafia
         private void nextGameState()
         {
             players.refreshAlive();
-            Codes.Job[] self = { Codes.Job.DOCTOR, Codes.Job.BODYGUARD, Codes.Job.GUNSMITH, Codes.Job.ARMORSMITH, Codes.Job.SILENCER, Codes.Job.VILLAGER, Codes.Job.MAFIA}; 
+            Helper.Enums.Job[] self = { Helper.Enums.Job.DOCTOR, Helper.Enums.Job.BODYGUARD, Helper.Enums.Job.GUNSMITH, Helper.Enums.Job.ARMORSMITH, Helper.Enums.Job.SILENCER, Helper.Enums.Job.VILLAGER, Helper.Enums.Job.MAFIA}; 
             num = (num + 1) % players.Count;
-            while (players[num].Job == Codes.Job.HUNTER || players[num].Job == Codes.Job.GODFATHER || players[num].Job == Codes.Job.FOOL)
+            while (players[num].Job == Helper.Enums.Job.HUNTER || players[num].Job == Helper.Enums.Job.GODFATHER || players[num].Job == Helper.Enums.Job.FOOL)
                 num = (num + 1) % players.Count;
-            if (players[num].Alive || players[num].Job == Codes.Job.VILLAGER || players[num].Job != Codes.Job.MAFIA)
+            if (players[num].Alive || players[num].Job == Helper.Enums.Job.VILLAGER || players[num].Job != Helper.Enums.Job.MAFIA)
             {
-                if (players[num].Job != Codes.Job.VILLAGER)
+                if (players[num].Job != Helper.Enums.Job.VILLAGER)
                     GameState.Text = players[num].Job + " " + players[num].Letter;
                 else
                 {
@@ -116,12 +116,12 @@ namespace Mafia
                     if (gunPresent)
                         GunPanel.Visible = true;
                 }
-                if (players[num].Job != Codes.Job.VILLAGER && players[num].Job != Codes.Job.MAFIA)
+                if (players[num].Job != Helper.Enums.Job.VILLAGER && players[num].Job != Helper.Enums.Job.MAFIA)
                 {
                     addTextPlayText("\nPlay moves to " + players[num].Name + " - " + players[num].Job + (players[num].Letter == ' ' ? string.Empty : " " + players[num].Letter));
                     addTextPlayText("\nSelect target of action.");
                 }
-                else if (players[num].Job == Codes.Job.MAFIA)
+                else if (players[num].Job == Helper.Enums.Job.MAFIA)
                 {
                     addTextPlayText("\nPlay moves to MAFIA.");
                     addTextPlayText("\nSelect target of action.");
@@ -145,7 +145,7 @@ namespace Mafia
                 if (!end)
                 {
                     TargetSelect.Items.Clear();
-                    if (self.Contains<Codes.Job>(players[num].Job))
+                    if (self.Contains<Helper.Enums.Job>(players[num].Job))
                         foreach (Player p in players.Alive)
                             TargetSelect.Items.Add(p.Name);
                     else
@@ -196,7 +196,7 @@ namespace Mafia
                 {
                     if (!skipNext)
                     {
-                        if(players[num].Job == Codes.Job.VILLAGER || players[num].Job == Codes.Job.MAFIA)
+                        if(players[num].Job == Helper.Enums.Job.VILLAGER || players[num].Job == Helper.Enums.Job.MAFIA)
                             num = players.skipToNextJob(num);
                         nextGameState();
                     }

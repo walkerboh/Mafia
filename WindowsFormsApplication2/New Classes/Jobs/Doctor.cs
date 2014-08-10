@@ -8,7 +8,7 @@ namespace Mafia
 {
     class Doctor : IPlayer
     {
-        public Doctor(String name) : base(name, Codes.Job.DOCTOR) { }
+        public Doctor(String name) : base(name, Helper.Enums.Job.DOCTOR) { }
 
         public override bool? TakeAction(ref IPlayer player)
         {

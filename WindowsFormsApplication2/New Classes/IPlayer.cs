@@ -14,8 +14,8 @@ namespace Mafia
         private string name;
         private bool alive;
         private int gun, armor;
-        private Codes.Side side;
-        private Codes.Job job;
+        private Helper.Enums.Side side;
+        private Helper.Enums.Job job;
         private List<IPlayer> killed;
         private List<Bodyguard> guarded;
         private bool saved;
@@ -24,16 +24,17 @@ namespace Mafia
         public bool Alive { get { return alive; } set { alive = value; } }
         public string Name { get { return name; } }
         public int ID { get { return id; } }
-        public Codes.Side Side { get { return side; } }
-        public Codes.Job Job { get { return job; } }
+        public Helper.Enums.Side Side { get { return side; } }
+        public Helper.Enums.Job Job { get { return job; } }
         public int Gun { get { return gun; } }
+        public int Armor { get { return armor; } }
         public bool Lynched { get; set; }
         public List<IPlayer> Killed { get { return killed; } set { killed = value; } }
         public List<Bodyguard> Guarded { get { return guarded; } set { guarded = value; } }
         public bool Saved { get { return saved; } set { saved = value; } }
         public bool Hooked { get { return hooked; } set { hooked = value; } }
 
-        public IPlayer(string name, Codes.Job job)
+        public IPlayer(string name, Helper.Enums.Job job)
         {
             id = ++IDCounter;
             this.name = name;
@@ -43,21 +44,21 @@ namespace Mafia
             gun = armor = 0;
         }
 
-        private Codes.Side JobToSide(Codes.Job job)
+        private Helper.Enums.Side JobToSide(Helper.Enums.Job job)
         {
             switch (job)
             {
-                case Codes.Job.MAFIA:
-                case Codes.Job.HOOKER:
-                case Codes.Job.GODFATHER:
-                case Codes.Job.SILENCER:
-                    return Codes.Side.MAFIA;
-                case Codes.Job.FOOL:
-                    return Codes.Side.FOOL;
-                case Codes.Job.KILLER:
-                    return Codes.Side.KILLER;
+                case Helper.Enums.Job.MAFIA:
+                case Helper.Enums.Job.HOOKER:
+                case Helper.Enums.Job.GODFATHER:
+                case Helper.Enums.Job.SILENCER:
+                    return Helper.Enums.Side.MAFIA;
+                case Helper.Enums.Job.FOOL:
+                    return Helper.Enums.Side.FOOL;
+                case Helper.Enums.Job.KILLER:
+                    return Helper.Enums.Side.KILLER;
                 default:
-                    return Codes.Side.VILLAGE;
+                    return Helper.Enums.Side.VILLAGE;
             }
         }
 
@@ -105,20 +106,20 @@ namespace Mafia
 
         public bool CopResult()
         {
-            return side == Codes.Side.MAFIA && job != Codes.Job.GODFATHER;
+            return side == Helper.Enums.Side.MAFIA && job != Helper.Enums.Job.GODFATHER;
         }
 
-        public void GiveItem(Codes.Item item)
+        public void GiveItem(Helper.Enums.Item item)
         {
-            if (item == Codes.Item.ARMOR)
+            if (item == Helper.Enums.Item.ARMOR)
                 armor++;
-            else if (item == Codes.Item.GUN)
+            else if (item == Helper.Enums.Item.GUN)
                 gun++;
         }
 
-        public bool UseItem(Codes.Item item)
+        public bool UseItem(Helper.Enums.Item item)
         {
-            if(item == Codes.Item.ARMOR)
+            if (item == Helper.Enums.Item.ARMOR)
             {
                 if (armor > 0)
                 {

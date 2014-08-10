@@ -15,8 +15,8 @@ namespace Mafia.Classes
         int villageAlive = 0;
         int totalPlayers = 0;
         int playersAlive = 0;
-        Codes.Job[] req = {Codes.Job.ARMORSMITH, Codes.Job.BODYGUARD, Codes.Job.COP, Codes.Job.DOCTOR, Codes.Job.GUNSMITH, Codes.Job.HOOKER, Codes.Job.HUNTER, Codes.Job.INSANECOP, Codes.Job.KILLER,
-                              Codes.Job.SILENCER, Codes.Job.VIGILANTE};
+        string[] req = {Helper.Job.ARMORSMITH, Helper.Job.BODYGUARD, Helper.Job.COP, Helper.Job.DOCTOR, Helper.Job.GUNSMITH, Helper.Job.HOOKER, Helper.Job.HUNTER, Helper.Job.INSANE_COP, Helper.Job.KILLER,
+                              Helper.Job.SILENCER, Helper.Job.VIGILANTE};
 
         public int VillageAlive { get { return villageAlive; } }
         public int MafiaAlive { get { return mafiaAlive; } }
@@ -35,21 +35,21 @@ namespace Mafia.Classes
         {
             if (mafiaAlive == 0 )
                 return 1;
-            if(((mafiaAlive >= villageAlive) && countJobPresent(Codes.Job.DOCTOR) == 0) || mafiaAlive > villageAlive)
+            if (((mafiaAlive >= villageAlive) && countJobPresent(Helper.Enums.Job.DOCTOR) == 0) || mafiaAlive > villageAlive)
                 return 2;
             else
                 return 0;
         }
 
-        public void addPlayer(string name, Codes.Job job)
+        public void addPlayer(string name, Helper.Enums.Job job)
         {
             char letter = ' ';
-            if (req.Contains(job))
+            if (req.Contains(Convert.ToString(job)))
                 letter = (char)((int)'A' + (jobCounts[(int)job]++));
             Player newPlayer = new Player(name, job, letter);
             players.Add(newPlayer);
             alive.Add(newPlayer);
-            if (newPlayer.Side == Codes.Side.MAFIA)
+            if (newPlayer.Side == Helper.Enums.Side.MAFIA)
                 mafiaAlive++;
             else
                 villageAlive++;
@@ -83,7 +83,7 @@ namespace Mafia.Classes
             if (players[index].Alive)
             {
                 players[index].Alive = false;
-                if (players[index].Side == Codes.Side.MAFIA)
+                if (players[index].Side == Helper.Enums.Side.MAFIA)
                 {
                     mafiaAlive--;
                     playersAlive--;
@@ -99,13 +99,14 @@ namespace Mafia.Classes
                 return false;
         }
 
-        public int countJobPresent(Codes.Job job)
+        public int countJobPresent(Helper.Enums.Job job)
         {
-            int count = 0;
-            foreach (Player p in players)
-                if (p.Job == job)
-                    count++;
-            return count;
+            //int count = 0;
+            //foreach (Player p in players)
+            //    if (p.Job == job)
+            //        count++;
+            //return count;
+            return 0;
         }
 
         public List<string> getPlayerStatus()

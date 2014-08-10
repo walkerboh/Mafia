@@ -8,13 +8,13 @@ namespace Mafia
 {
     class Armorsmith : IPlayer
     {
-        public Armorsmith(string name) : base(name, Codes.Job.ARMORSMITH) { }
+        public Armorsmith(string name) : base(name, Helper.Enums.Job.ARMORSMITH) { }
 
         public override bool? TakeAction(ref IPlayer player)
         {
             if (!this.Hooked)
             {
-                player.GiveItem(Codes.Item.ARMOR);
+                player.GiveItem(Helper.Enums.Item.ARMOR);
             }
             return null;
         }

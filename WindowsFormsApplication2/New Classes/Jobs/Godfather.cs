@@ -8,7 +8,7 @@ namespace Mafia
 {
     class Godfather : IPlayer
     {
-        public Godfather(string name) : base(name, Codes.Job.GODFATHER) { }
+        public Godfather(string name) : base(name, Helper.Enums.Job.GODFATHER) { }
 
         public override bool? TakeAction(ref IPlayer player)
         {

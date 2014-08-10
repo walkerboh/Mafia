@@ -8,7 +8,7 @@ namespace Mafia
 {
     class Vigilante : IPlayer
     {
-        public Vigilante(String name) : base(name, Codes.Job.VIGILANTE) { }
+        public Vigilante(String name) : base(name, Helper.Enums.Job.VIGILANTE) { }
 
         public override bool? TakeAction(ref IPlayer player)
         {

@@ -8,7 +8,7 @@ namespace Mafia
 {
     class Villager : IPlayer
     {
-        public Villager(string name) : base(name, Codes.Job.VILLAGER) { }
+        public Villager(string name) : base(name, Helper.Enums.Job.VILLAGER) { }
 
         public override bool? TakeAction(ref IPlayer player)
         {
