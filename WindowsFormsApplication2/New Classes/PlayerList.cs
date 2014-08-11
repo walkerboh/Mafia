@@ -27,7 +27,7 @@ namespace Mafia
         {
             if (MafiaAlive == 0)
                 return Helper.Enums.Side.VILLAGE;
-            else if (((MafiaAlive >= VillagersAlive) && JobCount(Helper.Enums.Job.DOCTOR) == 0) || MafiaAlive > VillagersAlive)
+            else if (((MafiaAlive >= VillagersAlive) && GetJobCount(Helper.Enums.Job.DOCTOR) == 0) || MafiaAlive > VillagersAlive)
                 return Helper.Enums.Side.MAFIA;
             else if (players.Any(player => player.Job == Helper.Enums.Job.FOOL && player.Lynched))
                 return Helper.Enums.Side.FOOL;
@@ -37,15 +37,22 @@ namespace Mafia
                 return Helper.Enums.Side.INVALID;
         }
 
-        private int JobCount(Helper.Enums.Job job)
+        public int GetJobCount(Helper.Enums.Job job)
         {
             return players.Count(player => player.Job == job);
+        }
+
+        public List<IPlayer> GetPlayersOfJob(Helper.Enums.Job job)
+        {
+            return players.Where(player => player.Job == job).ToList();
         }
 
         public void ClearActions()
         {
             players.ForEach(player => player.ClearActions());
         }
+
+        #region Enumerator
 
         public IEnumerator<IPlayer> GetEnumerator()
         {
@@ -81,5 +88,7 @@ namespace Mafia
         {
             get { return Current; }
         }
+
+        #endregion Enumerator
     }
 }

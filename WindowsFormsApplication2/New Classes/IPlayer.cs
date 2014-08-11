@@ -64,23 +64,26 @@ namespace Mafia
 
         public void ResolveKillsSaves()
         {
-            if (!killed.Any() || saved)
+            if (alive)
             {
-                killed.Clear();
-            }
-            while (killed.Any() && guarded.Any())
-            {
-                Random rand = new Random();
-                if (rand.NextDouble() < 0.5)
-                    guarded.First().Killed.Add(killed.First());
-                else
-                    killed.First().Killed.Add(guarded.First());
+                if (!killed.Any() || saved)
+                {
+                    killed.Clear();
+                }
+                while (killed.Any() && guarded.Any())
+                {
+                    Random rand = new Random();
+                    if (rand.NextDouble() < 0.5)
+                        guarded.First().Killed.Add(killed.First());
+                    else
+                        killed.First().Killed.Add(guarded.First());
 
-                killed.Remove(killed.First());
-                guarded.Remove(guarded.First());
+                    killed.Remove(killed.First());
+                    guarded.Remove(guarded.First());
+                }
+                if (killed.Any())
+                    KillPlayer();
             }
-            if (killed.Any())
-                KillPlayer();
         }
 
         public void KillPlayer(bool lynched = false)

@@ -57,6 +57,11 @@ namespace Mafia
                 MessageBox.Show("Please enter a player name.", "Invalid Player Name", MessageBoxButtons.OK);
                 return;
             }
+            else if (txtPlayerName.Text.Contains("(") || txtPlayerName.Text.Contains(")"))
+            {
+                MessageBox.Show("Please do not include parenthesis in the player name.", "Invalid Player Name", MessageBoxButtons.OK);
+                return;
+            }
 
             IPlayer newPlayer = PlayerFactory.CreatePlayer(txtPlayerName.Text, Convert.ToString(ddlPlayerJob.SelectedValue));
 
@@ -71,7 +76,7 @@ namespace Mafia
             {
                 DataGridViewRow row = gridPlayers.SelectedRows[0];
 
-                players.RemoveAll(player => player.ID == Convert.ToInt32(row.Cells["ID"]));
+                players.RemoveAll(player => player.ID == Convert.ToInt32(row.Cells["colID"].Value));
 
                 gridPlayers.Rows.Remove(row);
             }

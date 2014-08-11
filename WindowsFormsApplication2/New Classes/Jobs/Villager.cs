@@ -12,6 +12,7 @@ namespace Mafia
 
         public override bool? TakeAction(ref IPlayer player)
         {
+            player.KillPlayer(true);
             return null;
         }
     }
