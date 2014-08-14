@@ -42,6 +42,8 @@ namespace Mafia
             side = JobToSide(job);
             alive = true;
             gun = armor = 0;
+            killed = new List<IPlayer>();
+            guarded = new List<Bodyguard>();
         }
 
         private Helper.Enums.Side JobToSide(Helper.Enums.Job job)

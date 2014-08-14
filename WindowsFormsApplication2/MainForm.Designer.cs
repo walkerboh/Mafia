@@ -41,7 +41,6 @@
             this.ddlTarget = new System.Windows.Forms.ComboBox();
             this.btnSubmitAction = new System.Windows.Forms.Button();
             this.gridPlayers = new System.Windows.Forms.DataGridView();
-            this.btnGun = new System.Windows.Forms.Button();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +48,7 @@
             this.colAlive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGun = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArmor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGun = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPlayers)).BeginInit();
             this.SuspendLayout();
@@ -156,6 +156,7 @@
             this.btnSubmitAction.TabIndex = 6;
             this.btnSubmitAction.Text = "Submit";
             this.btnSubmitAction.UseVisualStyleBackColor = true;
+            this.btnSubmitAction.Click += new System.EventHandler(this.btnSubmitAction_Click);
             // 
             // gridPlayers
             // 
@@ -176,15 +177,6 @@
             this.gridPlayers.ReadOnly = true;
             this.gridPlayers.Size = new System.Drawing.Size(644, 213);
             this.gridPlayers.TabIndex = 7;
-            // 
-            // btnGun
-            // 
-            this.btnGun.Location = new System.Drawing.Point(582, 238);
-            this.btnGun.Name = "btnGun";
-            this.btnGun.Size = new System.Drawing.Size(75, 23);
-            this.btnGun.TabIndex = 8;
-            this.btnGun.Text = "Fire Gun";
-            this.btnGun.UseVisualStyleBackColor = true;
             // 
             // colID
             // 
@@ -228,6 +220,15 @@
             this.colArmor.HeaderText = "Armor";
             this.colArmor.Name = "colArmor";
             this.colArmor.ReadOnly = true;
+            // 
+            // btnGun
+            // 
+            this.btnGun.Location = new System.Drawing.Point(582, 238);
+            this.btnGun.Name = "btnGun";
+            this.btnGun.Size = new System.Drawing.Size(75, 23);
+            this.btnGun.TabIndex = 8;
+            this.btnGun.Text = "Fire Gun";
+            this.btnGun.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

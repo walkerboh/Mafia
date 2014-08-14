@@ -13,6 +13,7 @@ namespace Mafia
     public partial class MainForm : Form
     {
         private MafiaGame mafiaGame;
+        private IPlayer currentPlayer;
 
         public MainForm()
         {
@@ -48,8 +49,8 @@ namespace Mafia
         {
             RefreshPlayerStatus();
             btnGun.Visible = mafiaGame.GunActive;
-            IPlayer currentPlayer = mafiaGame.getCurrentTurn();
-            GameStateAndTargets(currentPlayer);
+            currentPlayer = mafiaGame.getCurrentTurn();
+            GameStateAndTargets();
             btnSubmitAction.Enabled = true;
         }
 
@@ -59,18 +60,19 @@ namespace Mafia
             List<object[]> playerInfo = mafiaGame.GetPlayerInfo();
             foreach (object[] info in playerInfo)
                 gridPlayers.Rows.Add(info);
+            gridPlayers.Refresh();
         }
 
-        private void GameStateAndTargets(IPlayer player)
+        private void GameStateAndTargets()
         {
-            if (player.Job == Helper.Enums.Job.VILLAGER)
+            if (currentPlayer.Job == Helper.Enums.Job.VILLAGER)
                 lblGameStateContent.Text = "Day";
-            else if (player.Job == Helper.Enums.Job.MAFIA)
+            else if (currentPlayer.Job == Helper.Enums.Job.MAFIA)
                 lblGameStateContent.Text = "Mafia";
             else
-                lblGameStateContent.Text = string.Concat(Helper.Job.JobToString(player.Job), " (", player.Name, ")");
+                lblGameStateContent.Text = string.Concat(Helper.Job.JobToString(currentPlayer.Job), " (", currentPlayer.Name, ")");
 
-            ddlTarget.DataSource = GetTargetList(player);
+            ddlTarget.DataSource = GetTargetList(currentPlayer);
         }
 
         private List<string> GetTargetList(IPlayer exclusion)
@@ -91,6 +93,39 @@ namespace Mafia
         private void exitMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSubmitAction_Click(object sender, EventArgs e)
+        {
+            string targetId = Convert.ToString(ddlTarget.SelectedItem);
+            targetId = targetId.Substring(targetId.IndexOf("(") + 1).Trim(')');
+            IPlayer target = mafiaGame.AlivePlayers.FirstOrDefault(player => player.ID == Convert.ToInt32(targetId));
+
+            if (target == null)
+                throw new Exception("How the hell did this ever happen?");
+
+            bool? result = currentPlayer.TakeAction(ref target);
+
+            if((currentPlayer.Job == Helper.Enums.Job.COP || currentPlayer.Job == Helper.Enums.Job.INSANECOP) && result != null)
+                WriteToOutput(string.Format("Inform cop ({0}) that target ({1}) is {2}.", currentPlayer.Name, target.Name, Convert.ToBoolean(result) ? "Mafia" : "not Mafia"));
+
+            //Do I want other outputs? Reiterate that player is hooked, given gun, etc. Probably will want when verbose logging is included.
+            //Once all the game play logic is in, should probably just decide what all needs to be printed out.
+            //Oh yeah, TODO ^^
+
+            //Move to next turn
+            RefreshPlayerStatus();
+            currentPlayer = mafiaGame.getCurrentTurn();
+            GameStateAndTargets();
+        }
+
+        private void WriteToOutput(string message)
+        {
+            txtGameOutput.AppendText(string.Concat("\n", message));
+
+            //Cheat to keep textbox scrolled to bottom. Is there a better way?
+            txtGameOutput.SelectionStart = txtGameOutput.Text.Length;
+            txtGameOutput.ScrollToCaret();
         }
     }
 }

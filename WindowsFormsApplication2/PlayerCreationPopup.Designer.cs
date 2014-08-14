@@ -34,11 +34,11 @@
             this.ddlPlayerJob = new System.Windows.Forms.ComboBox();
             this.btnAddPlayer = new System.Windows.Forms.Button();
             this.gridPlayers = new System.Windows.Forms.DataGridView();
-            this.btnDeletePlayers = new System.Windows.Forms.Button();
-            this.btmDone = new System.Windows.Forms.Button();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJob = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDeletePlayers = new System.Windows.Forms.Button();
+            this.btmDone = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridPlayers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +69,7 @@
             // 
             // ddlPlayerJob
             // 
+            this.ddlPlayerJob.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlPlayerJob.FormattingEnabled = true;
             this.ddlPlayerJob.Location = new System.Drawing.Point(139, 40);
             this.ddlPlayerJob.Name = "ddlPlayerJob";
@@ -99,26 +100,6 @@
             this.gridPlayers.Size = new System.Drawing.Size(306, 150);
             this.gridPlayers.TabIndex = 5;
             // 
-            // btnDeletePlayers
-            // 
-            this.btnDeletePlayers.Location = new System.Drawing.Point(231, 75);
-            this.btnDeletePlayers.Name = "btnDeletePlayers";
-            this.btnDeletePlayers.Size = new System.Drawing.Size(88, 23);
-            this.btnDeletePlayers.TabIndex = 6;
-            this.btnDeletePlayers.Text = "Delete Player";
-            this.btnDeletePlayers.UseVisualStyleBackColor = true;
-            this.btnDeletePlayers.Click += new System.EventHandler(this.btnDeletePlayers_Click);
-            // 
-            // btmDone
-            // 
-            this.btmDone.Location = new System.Drawing.Point(118, 75);
-            this.btmDone.Name = "btmDone";
-            this.btmDone.Size = new System.Drawing.Size(75, 23);
-            this.btmDone.TabIndex = 7;
-            this.btmDone.Text = "Done";
-            this.btmDone.UseVisualStyleBackColor = true;
-            this.btmDone.Click += new System.EventHandler(this.btmDone_Click);
-            // 
             // colID
             // 
             this.colID.HeaderText = "ID";
@@ -138,6 +119,26 @@
             this.colJob.HeaderText = "Job";
             this.colJob.Name = "colJob";
             this.colJob.ReadOnly = true;
+            // 
+            // btnDeletePlayers
+            // 
+            this.btnDeletePlayers.Location = new System.Drawing.Point(231, 75);
+            this.btnDeletePlayers.Name = "btnDeletePlayers";
+            this.btnDeletePlayers.Size = new System.Drawing.Size(88, 23);
+            this.btnDeletePlayers.TabIndex = 6;
+            this.btnDeletePlayers.Text = "Delete Player";
+            this.btnDeletePlayers.UseVisualStyleBackColor = true;
+            this.btnDeletePlayers.Click += new System.EventHandler(this.btnDeletePlayers_Click);
+            // 
+            // btmDone
+            // 
+            this.btmDone.Location = new System.Drawing.Point(118, 75);
+            this.btmDone.Name = "btmDone";
+            this.btmDone.Size = new System.Drawing.Size(75, 23);
+            this.btmDone.TabIndex = 7;
+            this.btmDone.Text = "Done";
+            this.btmDone.UseVisualStyleBackColor = true;
+            this.btmDone.Click += new System.EventHandler(this.btmDone_Click);
             // 
             // PlayerCreationPopup
             // 

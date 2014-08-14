@@ -68,6 +68,8 @@ namespace Mafia
             gridPlayers.Rows.Add(new object[] { newPlayer.ID, txtPlayerName.Text, ddlPlayerJob.SelectedValue });
 
             players.Add(newPlayer);
+
+            txtPlayerName.Clear();
         }
 
         private void btnDeletePlayers_Click(object sender, EventArgs e)
