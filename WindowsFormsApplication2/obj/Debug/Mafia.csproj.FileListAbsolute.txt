@@ -27,4 +27,3 @@ D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.pdb
 D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.MainForm.resources
 D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.NewGamePopup.resources
 D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.PlayerCreationPopup.resources
-D:\Mafia\WindowsFormsApplication2\obj\Debug\Mafia.csprojResolveAssemblyReference.cache

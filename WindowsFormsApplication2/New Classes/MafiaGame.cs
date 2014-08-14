@@ -11,7 +11,6 @@ namespace Mafia
         PlayerList players;
         Helper.Enums.Job[] turnOrder = {Helper.Enums.Job.MAFIA, Helper.Enums.Job.HOOKER, Helper.Enums.Job.SILENCER, Helper.Enums.Job.DOCTOR, Helper.Enums.Job.COP, Helper.Enums.Job.INSANECOP, 
                                     Helper.Enums.Job.BODYGUARD, Helper.Enums.Job.ARMORSMITH, Helper.Enums.Job.GUNSMITH, Helper.Enums.Job.VIGILANTE, Helper.Enums.Job.KILLER};
-        bool end;
         List<IPlayer> jobMultiples;
 
         private int currentTurn;
@@ -22,16 +21,15 @@ namespace Mafia
         public MafiaGame(List<IPlayer> players)
         {
             this.players = new PlayerList(players);
-            end = false;
             CurrentTurn = 0;
         }
 
-        public List<object[]> GetPlayerInfo()
+        public List<PlayerInfo> GetPlayerInfo()
         {
-            List<object[]> playerInfos = new List<object[]>();
+            List<PlayerInfo> playerInfos = new List<PlayerInfo>();
             foreach (IPlayer player in players)
             {
-                playerInfos.Add(new object[] { player.ID, player.Name, player.Side, player.Job, player.Alive, player.Gun, player.Armor });
+                playerInfos.Add(new PlayerInfo(player));
             }
 
             return playerInfos;
@@ -62,8 +60,6 @@ namespace Mafia
                 }
                 else if (jobPlayers.First().Job == Helper.Enums.Job.VILLAGER)
                 {
-                    //TODO swap out to UI so that we can get a read out.
-                    ResolveNightActions();
                     returnPlayer = jobPlayers[new Random().Next(jobPlayers.Count)];
                     currentTurn++;
                 }
@@ -83,7 +79,8 @@ namespace Mafia
             return returnPlayer;
         }
 
-        private void ResolveNightActions()
+        //TODO: Should probably return a list of strings? Read out for night actions?
+        public void ResolveNightActions()
         {
             while (players.AlivePlayers.Any(player => player.Killed.Any() && player.Alive))
             {
@@ -92,6 +89,19 @@ namespace Mafia
             }
 
             players.ClearActions();
+        }
+
+        public Helper.Enums.Side GameOver()
+        {
+            return players.GameOver();
+        }
+
+        public IPlayer GetFoolKillerWinner(Helper.Enums.Job job)
+        {
+            if (job == Helper.Enums.Job.FOOL)
+                return players.GetFoolWinner();
+            else
+                return players.AlivePlayers.First();
         }
     }
 }

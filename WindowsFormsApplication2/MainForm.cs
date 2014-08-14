@@ -32,6 +32,7 @@ namespace Mafia
             gridPlayers.DataSource = null;
             ddlTarget.DataSource = null;
             lblGameStateContent.Text = "Setup";
+            gameOver = false;
         }
 
         private void newGameMenuItem_Click(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace Mafia
         private void SetupGame()
         {
             RefreshPlayerStatus();
-            btnGun.Visible = mafiaGame.GunActive;
+            btnGun.Visible = btnGun.Enabled = mafiaGame.GunActive;
             currentPlayer = mafiaGame.getCurrentTurn();
             GameStateAndTargets();
             btnSubmitAction.Enabled = true;
@@ -56,23 +57,24 @@ namespace Mafia
 
         private void RefreshPlayerStatus()
         {
-            gridPlayers.Rows.Clear();
-            List<object[]> playerInfo = mafiaGame.GetPlayerInfo();
-            foreach (object[] info in playerInfo)
-                gridPlayers.Rows.Add(info);
+            List<PlayerInfo> playerInfo = mafiaGame.GetPlayerInfo();
+            gridPlayers.DataSource = playerInfo;
             gridPlayers.Refresh();
         }
 
         private void GameStateAndTargets()
         {
-            if (currentPlayer.Job == Helper.Enums.Job.VILLAGER)
-                lblGameStateContent.Text = "Day";
-            else if (currentPlayer.Job == Helper.Enums.Job.MAFIA)
-                lblGameStateContent.Text = "Mafia";
-            else
-                lblGameStateContent.Text = string.Concat(Helper.Job.JobToString(currentPlayer.Job), " (", currentPlayer.Name, ")");
+            if (!gameOver)
+            {
+                if (currentPlayer.Job == Helper.Enums.Job.VILLAGER)
+                    lblGameStateContent.Text = "Day";
+                else if (currentPlayer.Job == Helper.Enums.Job.MAFIA)
+                    lblGameStateContent.Text = "Mafia";
+                else
+                    lblGameStateContent.Text = string.Concat(Helper.Job.JobToString(currentPlayer.Job), " (", currentPlayer.Name, ")");
 
-            ddlTarget.DataSource = GetTargetList(currentPlayer);
+                ddlTarget.DataSource = GetTargetList(currentPlayer);
+            }
         }
 
         private List<string> GetTargetList(IPlayer exclusion)
@@ -113,10 +115,55 @@ namespace Mafia
             //Once all the game play logic is in, should probably just decide what all needs to be printed out.
             //Oh yeah, TODO ^^
 
-            //Move to next turn
-            RefreshPlayerStatus();
-            currentPlayer = mafiaGame.getCurrentTurn();
-            GameStateAndTargets();
+            bool gameOver = false;
+
+            //If the job just completed is Villager, then the day just ended and gameOver should be checked after a lynch.
+            //On lynch actions SHOULD fire before gameOver is checked.
+            if (currentPlayer.Job == Helper.Enums.Job.VILLAGER)
+            {
+                gameOver = GameOver();
+            }
+
+            if (!gameOver)
+            {
+                //Move to next turn
+                currentPlayer = mafiaGame.getCurrentTurn();
+                //If the current job is a villager, the night has ended, resolve night actions and check for game over
+                if (currentPlayer.Job == Helper.Enums.Job.VILLAGER)
+                {
+                    mafiaGame.ResolveNightActions();
+                    gameOver = GameOver();
+                }
+
+                if (!gameOver)
+                {
+                    GameStateAndTargets();
+                    RefreshPlayerStatus();
+                }
+            }
+        }
+
+        private bool GameOver()
+        {
+            Helper.Enums.Side winner = mafiaGame.GameOver();
+            if (winner != Helper.Enums.Side.INVALID)
+            {
+                if (winner == Helper.Enums.Side.VILLAGE)
+                    WriteToOutput("VILLAGE WINS!");
+                else if (winner == Helper.Enums.Side.MAFIA)
+                    WriteToOutput("MAFIA WINS!");
+                else if (winner == Helper.Enums.Side.FOOL)
+                    WriteToOutput(string.Format("FOOL ({0}) WINS!", mafiaGame.GetFoolKillerWinner(Helper.Enums.Job.FOOL).Name));
+                else if (winner == Helper.Enums.Side.KILLER)
+                    WriteToOutput(string.Format("KILLER ({0}) WINS!", mafiaGame.GetFoolKillerWinner(Helper.Enums.Job.KILLER).Name));
+
+                btnSubmitAction.Enabled = false;
+                btnGun.Enabled = false;
+
+                return true;
+            }
+
+            return false;
         }
 
         private void WriteToOutput(string message)

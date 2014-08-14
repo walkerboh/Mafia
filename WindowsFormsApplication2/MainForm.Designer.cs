@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.systemMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,16 +42,18 @@
             this.ddlTarget = new System.Windows.Forms.ComboBox();
             this.btnSubmitAction = new System.Windows.Forms.Button();
             this.gridPlayers = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJob = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAlive = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGun = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colArmor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGun = new System.Windows.Forms.Button();
+            this.playerInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sideDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aliveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gunDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.armorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPlayers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -163,63 +166,22 @@
             this.gridPlayers.AllowUserToAddRows = false;
             this.gridPlayers.AllowUserToDeleteRows = false;
             this.gridPlayers.AllowUserToOrderColumns = true;
+            this.gridPlayers.AutoGenerateColumns = false;
             this.gridPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.colName,
-            this.colSide,
-            this.colJob,
-            this.colAlive,
-            this.colGun,
-            this.colArmor});
+            this.nameDataGridViewTextBoxColumn,
+            this.iDDataGridViewTextBoxColumn,
+            this.jobDataGridViewTextBoxColumn,
+            this.sideDataGridViewTextBoxColumn,
+            this.aliveDataGridViewTextBoxColumn,
+            this.gunDataGridViewTextBoxColumn,
+            this.armorDataGridViewTextBoxColumn});
+            this.gridPlayers.DataSource = this.playerInfoBindingSource;
             this.gridPlayers.Location = new System.Drawing.Point(16, 271);
             this.gridPlayers.Name = "gridPlayers";
             this.gridPlayers.ReadOnly = true;
             this.gridPlayers.Size = new System.Drawing.Size(644, 213);
             this.gridPlayers.TabIndex = 7;
-            // 
-            // colID
-            // 
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Visible = false;
-            // 
-            // colName
-            // 
-            this.colName.HeaderText = "Name";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            // 
-            // colSide
-            // 
-            this.colSide.HeaderText = "Side";
-            this.colSide.Name = "colSide";
-            this.colSide.ReadOnly = true;
-            // 
-            // colJob
-            // 
-            this.colJob.HeaderText = "Job";
-            this.colJob.Name = "colJob";
-            this.colJob.ReadOnly = true;
-            // 
-            // colAlive
-            // 
-            this.colAlive.HeaderText = "Alive";
-            this.colAlive.Name = "colAlive";
-            this.colAlive.ReadOnly = true;
-            // 
-            // colGun
-            // 
-            this.colGun.HeaderText = "Gun";
-            this.colGun.Name = "colGun";
-            this.colGun.ReadOnly = true;
-            // 
-            // colArmor
-            // 
-            this.colArmor.HeaderText = "Armor";
-            this.colArmor.Name = "colArmor";
-            this.colArmor.ReadOnly = true;
             // 
             // btnGun
             // 
@@ -229,6 +191,64 @@
             this.btnGun.TabIndex = 8;
             this.btnGun.Text = "Fire Gun";
             this.btnGun.UseVisualStyleBackColor = true;
+            // 
+            // playerInfoBindingSource
+            // 
+            this.playerInfoBindingSource.DataSource = typeof(PlayerInfo);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.nameDataGridViewTextBoxColumn.Width = 140;
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // jobDataGridViewTextBoxColumn
+            // 
+            this.jobDataGridViewTextBoxColumn.DataPropertyName = "Job";
+            this.jobDataGridViewTextBoxColumn.HeaderText = "Job";
+            this.jobDataGridViewTextBoxColumn.Name = "jobDataGridViewTextBoxColumn";
+            this.jobDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sideDataGridViewTextBoxColumn
+            // 
+            this.sideDataGridViewTextBoxColumn.DataPropertyName = "Side";
+            this.sideDataGridViewTextBoxColumn.HeaderText = "Side";
+            this.sideDataGridViewTextBoxColumn.Name = "sideDataGridViewTextBoxColumn";
+            this.sideDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aliveDataGridViewTextBoxColumn
+            // 
+            this.aliveDataGridViewTextBoxColumn.DataPropertyName = "Alive";
+            this.aliveDataGridViewTextBoxColumn.HeaderText = "Alive";
+            this.aliveDataGridViewTextBoxColumn.Name = "aliveDataGridViewTextBoxColumn";
+            this.aliveDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // gunDataGridViewTextBoxColumn
+            // 
+            this.gunDataGridViewTextBoxColumn.DataPropertyName = "Gun";
+            this.gunDataGridViewTextBoxColumn.HeaderText = "Gun";
+            this.gunDataGridViewTextBoxColumn.Name = "gunDataGridViewTextBoxColumn";
+            this.gunDataGridViewTextBoxColumn.ReadOnly = true;
+            this.gunDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // armorDataGridViewTextBoxColumn
+            // 
+            this.armorDataGridViewTextBoxColumn.DataPropertyName = "Armor";
+            this.armorDataGridViewTextBoxColumn.HeaderText = "Armor";
+            this.armorDataGridViewTextBoxColumn.Name = "armorDataGridViewTextBoxColumn";
+            this.armorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.armorDataGridViewTextBoxColumn.Width = 75;
             // 
             // MainForm
             // 
@@ -251,6 +271,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPlayers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,12 +293,13 @@
         private System.Windows.Forms.Button btnSubmitAction;
         private System.Windows.Forms.DataGridView gridPlayers;
         private System.Windows.Forms.Button btnGun;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSide;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colJob;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAlive;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colGun;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colArmor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sideDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aliveDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gunDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn armorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource playerInfoBindingSource;
     }
 }

@@ -52,6 +52,11 @@ namespace Mafia
             players.ForEach(player => player.ClearActions());
         }
 
+        public IPlayer GetFoolWinner()
+        {
+            return players.First(player => player.Job == Helper.Enums.Job.FOOL && player.Lynched);
+        }
+
         #region Enumerator
 
         public IEnumerator<IPlayer> GetEnumerator()
