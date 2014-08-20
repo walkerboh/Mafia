@@ -83,7 +83,12 @@ namespace Mafia
                     killed.Remove(killed.First());
                     guarded.Remove(guarded.First());
                 }
-                if (killed.Any())
+                while (killed.Any() && armor > 0)
+                {
+                    killed.Remove(killed.First());
+                    armor--;
+                }
+                if(killed.Any())
                     KillPlayer();
             }
         }
@@ -120,30 +125,6 @@ namespace Mafia
                 armor++;
             else if (item == Helper.Enums.Item.GUN)
                 gun++;
-        }
-
-        public bool UseItem(Helper.Enums.Item item)
-        {
-            if (item == Helper.Enums.Item.ARMOR)
-            {
-                if (armor > 0)
-                {
-                    armor--;
-                    return true;
-                }
-                else
-                    return false;
-            }
-            else
-            {
-                if (gun > 0)
-                {
-                    gun--;
-                    return true;
-                }
-                else
-                    return false;
-            }
         }
     }
 }

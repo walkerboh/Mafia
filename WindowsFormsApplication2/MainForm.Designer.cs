@@ -42,8 +42,6 @@
             this.ddlTarget = new System.Windows.Forms.ComboBox();
             this.btnSubmitAction = new System.Windows.Forms.Button();
             this.gridPlayers = new System.Windows.Forms.DataGridView();
-            this.btnGun = new System.Windows.Forms.Button();
-            this.playerInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jobDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +49,8 @@
             this.aliveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gunDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.armorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playerInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnGun = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPlayers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerInfoBindingSource)).BeginInit();
@@ -177,24 +177,13 @@
             this.gunDataGridViewTextBoxColumn,
             this.armorDataGridViewTextBoxColumn});
             this.gridPlayers.DataSource = this.playerInfoBindingSource;
+            this.gridPlayers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gridPlayers.Location = new System.Drawing.Point(16, 271);
+            this.gridPlayers.MultiSelect = false;
             this.gridPlayers.Name = "gridPlayers";
             this.gridPlayers.ReadOnly = true;
             this.gridPlayers.Size = new System.Drawing.Size(644, 213);
             this.gridPlayers.TabIndex = 7;
-            // 
-            // btnGun
-            // 
-            this.btnGun.Location = new System.Drawing.Point(582, 238);
-            this.btnGun.Name = "btnGun";
-            this.btnGun.Size = new System.Drawing.Size(75, 23);
-            this.btnGun.TabIndex = 8;
-            this.btnGun.Text = "Fire Gun";
-            this.btnGun.UseVisualStyleBackColor = true;
-            // 
-            // playerInfoBindingSource
-            // 
-            this.playerInfoBindingSource.DataSource = typeof(PlayerInfo);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -249,6 +238,19 @@
             this.armorDataGridViewTextBoxColumn.Name = "armorDataGridViewTextBoxColumn";
             this.armorDataGridViewTextBoxColumn.ReadOnly = true;
             this.armorDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // playerInfoBindingSource
+            // 
+            this.playerInfoBindingSource.DataSource = typeof(PlayerInfo);
+            // 
+            // btnGun
+            // 
+            this.btnGun.Location = new System.Drawing.Point(582, 238);
+            this.btnGun.Name = "btnGun";
+            this.btnGun.Size = new System.Drawing.Size(75, 23);
+            this.btnGun.TabIndex = 8;
+            this.btnGun.Text = "Fire Gun";
+            this.btnGun.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

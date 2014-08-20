@@ -15,6 +15,7 @@ namespace Mafia
         public NewGamePopup()
         {
             InitializeComponent();
+            this.ControlBox = false;
         }
 
         private void radClassic_CheckedChanged(object sender, EventArgs e)

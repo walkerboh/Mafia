@@ -18,6 +18,7 @@ namespace Mafia
         public PlayerCreationPopup()
         {
             InitializeComponent();
+            this.ControlBox = false;
         }
 
         public PlayerCreationPopup(MainForm mainForm, bool extended)

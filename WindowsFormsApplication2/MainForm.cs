@@ -32,7 +32,6 @@ namespace Mafia
             gridPlayers.DataSource = null;
             ddlTarget.DataSource = null;
             lblGameStateContent.Text = "Setup";
-            gameOver = false;
         }
 
         private void newGameMenuItem_Click(object sender, EventArgs e)
@@ -64,8 +63,6 @@ namespace Mafia
 
         private void GameStateAndTargets()
         {
-            if (!gameOver)
-            {
                 if (currentPlayer.Job == Helper.Enums.Job.VILLAGER)
                     lblGameStateContent.Text = "Day";
                 else if (currentPlayer.Job == Helper.Enums.Job.MAFIA)
@@ -74,7 +71,6 @@ namespace Mafia
                     lblGameStateContent.Text = string.Concat(Helper.Job.JobToString(currentPlayer.Job), " (", currentPlayer.Name, ")");
 
                 ddlTarget.DataSource = GetTargetList(currentPlayer);
-            }
         }
 
         private List<string> GetTargetList(IPlayer exclusion)
